@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="https://cdn.pixabay.com/photo/2024/03/18/19/55/ai-generated-8641784_1280.png"
+        type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="random.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="circle">
+            <img class="zz" src="https://randomuser.me/api/portraits/men/34.jpg" alt="">
+        </div>
+        <div class="up"></div>
+        <div class="down">
+            <p class="name">My name is</p>
+            <p class="nam">ricardo</p>
+            <div class="item">
+                <ul class="all">
+                    <li class="one"><i class="fa-solid fa-user"></i></li>
+                    <li class="two"><i class="fa-solid fa-envelope"></i></li>
+                    <li class="three"><i class="fa-regular fa-calendar-days"></i></li>
+                    <li class="four"><i class="fa-solid fa-map"></i></li>
+                    <li class="fiv"><i class="fa-solid fa-phone"></i></li>
+                    <li class="six"><i class="fa-solid fa-lock"></i></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+<script>
+    let api = "https://randomuser.me/api/";
+    async function name() {
+        let data = await fetch(api);
+        let ac = await data.json();
+        let x = ac.results[0];
+        console.log(x);
+        let h1 = document.querySelector(".nam");
+        let n = document.querySelector(".name");
+        let h2 = document.querySelector(".one");
+        let two = document.querySelector(".two");
+        let three = document.querySelector(".three");
+        let four = document.querySelector(".four");
+        let five = document.querySelector(".five");
+        let pic = document.querySelector(".zz");
+
+
+
+        pic.src = x.picture.medium;
+
+        h1.innerHTML = (x.name.first + " " + x.name.last);
+       
+        two.addEventListener("mouseover", () => {
+            n.innerHTML = "My email is"
+            h1.innerHTML = (x.email);
+        });
+        three.addEventListener("mouseover", () => {
+            n.innerHTML = "My DOB is"
+            
+            h1.innerHTML = (x.dob.date);
+            
+        });
+        four.addEventListener("mouseover", () => {
+            n.innerHTML = "My address is"
+            h1.innerHTML = (x.location.street.name);
+        });
+        five.addEventListener("mouseover", () => {
+            
+            h1.innerHTML = (x.email);
+        });
+    }
+    name();
+</script>
+
+</html>
